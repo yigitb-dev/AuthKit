@@ -1,5 +1,6 @@
 import requests
 import urllib.parse
+import secrets 
 
 class OAuthClient:
     def __init__(self):
@@ -14,8 +15,9 @@ class OAuthClient:
             "redirect_uri": redirect_uri
                                         }
     
-    def get_auth_url(self, provider_name, state):
+    def get_auth_url(self, provider_name):
         service =  self.OAuth_providers[provider_name]
+        state = secrets.token_urlsafe(16)  
         params = {
             "response_type": "code",
             "client_id": service["client_id"],
@@ -37,3 +39,5 @@ class OAuthClient:
         }
         response = requests.post(service["token_url"], data=data)
         return response.json()
+
+

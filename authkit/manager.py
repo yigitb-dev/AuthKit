@@ -1,10 +1,14 @@
 from .encryption import Encryption
 from .storage import Storage
+from .manager import Manager
+from .oauth import OAuthClient
 
 class Manager:
     def __init__(self, key=None, filename="passwords.json"):
         self.encryption = Encryption(key)
         self.storage = Storage(filename)
+        self.manager = Manager(key, filename)
+        self.oauth_client = OAuthClient()
     
     def add_password(self, service, username, password):
         data = self.storage.read()
@@ -21,3 +25,9 @@ class Manager:
                 "password": self.encryption.decrypt(encrypted_password)
             }
         return None
+
+    def login(self, service, username, password):
+        stored = self.manager.get_password(service)
+        if stored and stored["username"] == username and stored["password"] == password:
+            return True
+        return False
