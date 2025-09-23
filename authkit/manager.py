@@ -4,6 +4,8 @@ from .manager import Manager
 from .oauth import OAuthClient
 
 class Manager:
+
+    
     def __init__(self, key=None, filename="passwords.json"):
         self.encryption = Encryption(key)
         self.storage = Storage(filename)

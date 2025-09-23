@@ -9,6 +9,7 @@ class Encryption:
     
     def encrypt(self, data):
         return self.fernet.encrypt(data.encode()).decode()
+    
 
     def decrypt(self,key):
         return self.fernet.decrypt(key.encode()).decode()
