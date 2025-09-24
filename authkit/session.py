@@ -1,6 +1,7 @@
 import base32_lib as bs32
 import uuid
 import json
+
 class SessionManager:
     def __init__(self,database_path="user_data.json"):
         self.database_path = database_path
