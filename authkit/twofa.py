@@ -2,7 +2,7 @@ import base32_lib as bs32
 import json
 import pyotp
 
-class TwoF:
+class TwoFA:
     def __init__(self,filename="user_data.json"):
         self.filename = filename
     
