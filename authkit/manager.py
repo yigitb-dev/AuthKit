@@ -32,3 +32,5 @@ class Manager:
         if stored == password:
             return True
         return False
+    
+    
