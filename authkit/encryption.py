@@ -1,4 +1,5 @@
 from cryptography.fernet import Fernet
+import math
 
 class Encryption:
     def __init__(self,key=None):
@@ -26,6 +27,7 @@ class Encryption:
         number_count = 0
         common_patterns_count = 0
         password_len = len(password)
+        entropy_symbol_set_size = 0
         total_point = 0
         temp_var_password = ''
 
@@ -33,12 +35,21 @@ class Encryption:
         for char in password:
             if char.isupper():
                 uppercase_letters += 1
+                if uppercase_letters ==1:
+                    entropy_symbol_set_size +=26
             if char in special_chars_list:
                 special_chars += 1
+                if special_chars==1:
+                    entropy_symbol_set_size += len(special_chars_list)
             if char.islower():
                 lowercase_letters += 1
+                if lowercase_letters==1:
+                    entropy_symbol_set_size +=26
             if char in numbers_list:
                 number_count += 1
+                if number_count==1:
+                    entropy_symbol_set_size+=10
+
 
             temp_var_password += char
 
@@ -56,6 +67,14 @@ class Encryption:
 
         if number_count >= 1:
             total_point += 1
+        
+        #Calculate entropy
+        entropy = password_len*math.log2(entropy_symbol_set_size)
+
+        if entropy >=50:
+            total_point +=1
+        elif entropy <= 28:
+            total_point-=1
 
         total_point -= common_patterns_count
 
