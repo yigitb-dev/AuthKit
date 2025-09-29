@@ -9,7 +9,6 @@ class Manager:
     def __init__(self, key=None, filename="passwords.json"):
         self.encryption = Encryption(key)
         self.storage = Storage(filename)
-        self.manager = Manager(key, filename)
         self.oauth_client = OAuthClient()
     
     def register_user(self,username, password):
