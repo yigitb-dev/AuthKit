@@ -1,5 +1,7 @@
 from cryptography.fernet import Fernet
 import math
+import secrets
+from storage import Storage
 
 class Encryption:
     def __init__(self,key=None):
@@ -15,6 +17,7 @@ class Encryption:
     def decrypt(self,key):
         return self.fernet.decrypt(key.encode()).decode()
     
+
     def get_password_strength(password):
 
         # Initialize counters and lists

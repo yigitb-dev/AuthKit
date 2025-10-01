@@ -1,6 +1,5 @@
 from .encryption import Encryption
 from .storage import Storage
-from .manager import Manager
 from .oauth import OAuthClient
 
 class Manager:

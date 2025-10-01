@@ -1,6 +1,7 @@
 import json
 import os
 import hashlib
+import secrets
 
 class Storage:
     def __init__(self,filename="user_data.json"):
@@ -18,13 +19,32 @@ class Storage:
             json.dump(data, f, indent=4)
         
     
-    def calculate_hash(data):
+    def calculate_hash(self,data):
         data_string = json.dumps(data,sort_keys=True)
         return hashlib.sha256(data_string).hexdigest()
     
-    def verify_hash(data,expected_hash):
+    def verify_hash(self,data,expected_hash):
         calculated_hash = Storage.calculate_hash(data)
         if calculated_hash == expected_hash:
             return True
         return False
+    
+    def generate_reset_token(self,username):
+        token = secrets.token_urlsafe(16)
+        data = Storage.read()
+        data[username]["reset_token"] = token
+        Storage.write(data)
+        return token
+    
+    def verify_reset_token(self,username,to_verify):
+        data = Storage.read()
+        token = data[username]["reset_token"]
+        if token == to_verify:
+            return True
+        return False
+        
+
+
+        
+    
             
