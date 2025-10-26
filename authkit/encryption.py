@@ -5,8 +5,6 @@ from storage import Storage
 
 class Encryption:
     def __init__(self,key=None):
-        if key is None:
-            self.key = Fernet.generate_key()
         self.key = key
         self.fernet = Fernet(self.key)
     
