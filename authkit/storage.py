@@ -56,12 +56,7 @@ class Storage:
 
         return public_pem
     
-    #Sender Client-Side
-    def e2e_encrypt(public_key,message):
-            return  public_key.encrypt(message,padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),algorithm=hashes.SHA256(),label=None))
 
-    def e2e_decryption():
-        pass
 
 
     #Hashing Tools

@@ -2,6 +2,9 @@ from cryptography.fernet import Fernet
 import math
 import secrets
 from storage import Storage
+from cryptography.fernet import Fernet
+from cryptography.hazmat.primitives.asymmetric import padding
+from cryptography.hazmat.primitives import  hashes
 
 class Encryption:
     def __init__(self,key=None):
@@ -14,6 +17,14 @@ class Encryption:
 
     def decrypt(self,key):
         return self.fernet.decrypt(key.encode()).decode()
+    
+#End 2 End Encryption
+    #Sender Client-Side
+    def e2e_encrypt(public_key,message):
+            return  public_key.encrypt(message,padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),algorithm=hashes.SHA256(),label=None))
+
+    def e2e_decryption():
+        pass
     
 
     def get_password_strength(password):
