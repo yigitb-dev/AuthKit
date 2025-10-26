@@ -19,12 +19,14 @@ class Encryption:
         return self.fernet.decrypt(key.encode()).decode()
     
 #End 2 End Encryption
-    #Sender Client-Side
+    #Sender Client-side
     def e2e_encrypt(public_key,message):
             return  public_key.encrypt(message,padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),algorithm=hashes.SHA256(),label=None))
-
-    def e2e_decryption():
-        pass
+    #Reciever Client-side
+    def e2e_decryption(private_key,ciphertext):
+        return private_key.decrypt(ciphertext,padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),algorithm=hashes.SHA256(),label=None)
+)
+        
     
 
     def get_password_strength(password):
