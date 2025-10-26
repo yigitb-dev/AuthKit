@@ -7,7 +7,7 @@ setup(
     name="authkit",
     version="0.1.0",
     author="Yiğit Bıçakçı",
-    author_email="your.email@example.com",  # Replace with your email
+    author_email="bicakci42@yahoo.com", 
     description="A lightweight, modular, and extensible Python authentication framework",
     long_description=long_description,
     long_description_content_type="text/markdown",
