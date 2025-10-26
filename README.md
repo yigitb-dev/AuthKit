@@ -7,7 +7,7 @@
 
 ## Features
 - **Password Management:**
-  - Not so securely store and retrieve encrypted passwords.
+  - Store and retrieve encrypted passwords.
   - Password strength validation and history tracking.
   - Password expiration support.
 
