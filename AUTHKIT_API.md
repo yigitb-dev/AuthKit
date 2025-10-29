@@ -244,8 +244,3 @@ High-priority refactors to make the package robust:
 
 ---
 
-## Where to go from here
-- I can convert this API reference into an in-repo `docs/` folder with per-module Markdown files.
-- I can implement the recommended refactors (small PRs) to make the library consistent and testable.
-
-If you'd like, I can now create a `docs/` version of this file, add inline usage examples to each module, or open PR-style patches to fix the priority issues listed above. Which would you like next?
