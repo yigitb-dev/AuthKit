@@ -15,8 +15,8 @@ class Encryption:
         return self.fernet.encrypt(data.encode()).decode()
     
 
-    def decrypt(self,key):
-        return self.fernet.decrypt(key.encode()).decode()
+    def decrypt(self,encrypted_bytes):
+        return self.fernet.decrypt(encrypted_bytes.encode()).decode()
     
 #End 2 End Encryption
     #Sender Client-side

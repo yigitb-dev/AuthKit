@@ -5,10 +5,10 @@ from .oauth import OAuthClient
 class Manager:
 
     
-    def __init__(self, key=None, filename="passwords.json"):
-        self.encryption = Encryption(key)
-        self.storage = Storage(filename)
-        self.oauth_client = OAuthClient()
+    def __init__(self, encryption=None,storage=None,oauth_client=None):
+        self.storage = storage
+        self.encryption = encryption
+        self.oauth_client = oauth_client
     
     def register_user(self,username, password):
         data = self.storage.read()
@@ -20,13 +20,11 @@ class Manager:
         data = self.storage.read()
         if username in data:
             encrypted_password = data[username]["password"].encode()
-            return {
-                self.encryption.decrypt(encrypted_password)
-            }
+            return self.encryption.decrypt(encrypted_password)
         return None
 
     def login(self,username, password):
-        stored = self.manager.get_password(username)
+        stored = Manager.get_password(username)
         if stored == password:
             return True
         return False
