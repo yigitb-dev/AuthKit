@@ -22,8 +22,8 @@ class Storage:
         with open(self.filename, 'w') as f:
             json.dump(data, f, indent=4)
     
-    #End2End Encryption
-    def generate_key_pair(username):
+    #Asymetrical Encryption
+    def generate_asymetrical_key_pair(username):
         #Generate private key
         private_key = rsa.generate_private_key(
             public_exponent=65537,
